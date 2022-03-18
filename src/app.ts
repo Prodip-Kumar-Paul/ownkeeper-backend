@@ -29,8 +29,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Data sanitization against SQL query injection
+/**
+ * TODO => find some npm pkg
+ */
 
 // Data sanitization against XSS
+/**
+ * * Type declaration need
+ */
 // app.use(xss());
 
 // Prevent parameter pollution
