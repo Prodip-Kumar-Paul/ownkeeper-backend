@@ -1,6 +1,8 @@
-export default interface Error {
+export default interface MyError {
   name?: string;
   message?: string;
   status?: boolean;
-  statusCode?: number;
+  statusCode: number;
+  data?: string;
+  stack?: string;
 }

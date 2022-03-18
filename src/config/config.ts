@@ -13,7 +13,7 @@ dotenv.config({
 import configDev from './config.dev';
 import configProd from './config.prod';
 
-let config: ConfigData = { ...configDev };
+let config: ConfigData = { NODE_ENV: process.env.NODE_ENV?.trim() };
 
 if (process.env.NODE_ENV?.trim() === 'dev') {
   config = { ...configDev };

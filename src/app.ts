@@ -8,9 +8,9 @@ import cors from 'cors';
 import hpp from 'hpp';
 import path from 'node:path';
 
-// import { globalErrorHandler } from './utils/errorHandler.js';
+import { globalErrorHandler } from './utils/errorHandler';
 
-// import testApis from './apis/testApis.js';
+import testApis from './apis/testApi';
 
 //app  and middleware
 const app = express();
@@ -35,7 +35,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Data sanitization against XSS
 /**
- * * Type declaration need
+ * ? Type declaration need
  */
 // app.use(xss());
 
@@ -70,10 +70,10 @@ app.use((req, res, next) => {
   next();
 });
 
-// app.use('/api/v1/test', testApis);
+app.use('/api/v1/test', testApis);
 
 // EROOR HANDLING MIDDLEWARE
-// app.use(globalErrorHandler);
+app.use(globalErrorHandler);
 
 // 404 MIDDLEWARE
 app.use((req, res, next) => {
