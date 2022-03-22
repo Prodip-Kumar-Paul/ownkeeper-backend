@@ -1,4 +1,6 @@
+import { PrismaClient } from '@prisma/client';
 import config from './config/config';
+import app from './app';
 
 process.on('uncaughtException', (err) => {
   console.log('UNCAUGHT EXCEPTION! 💥 Shutting down...');
@@ -6,11 +8,17 @@ process.on('uncaughtException', (err) => {
   process.exit(1);
 });
 
-import app from './app';
-
-// const DB = config.DB_URL.replace('<password>', config.DB_PASSWORD);
-
 // DB connection
+
+const prisma = new PrismaClient();
+prisma
+  .$connect()
+  .then(() => {
+    console.log('DB connected successfully!');
+  })
+  .catch((err: Error) => console.log(err));
+
+// console.log(config.DB_URL);
 
 const port = process.env.PORT || config.PORT || 8080;
 const server = app.listen(port, () => {
