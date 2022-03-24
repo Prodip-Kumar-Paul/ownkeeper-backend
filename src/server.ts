@@ -10,7 +10,17 @@ process.on('uncaughtException', (err) => {
 
 // DB connection
 
-const prisma = new PrismaClient();
+/**
+ * @param url {overwrite initial database url}
+ */
+const prisma = new PrismaClient({
+  datasources: {
+    db: {
+      url: config.DB_URL,
+    },
+  },
+});
+
 prisma
   .$connect()
   .then(() => {

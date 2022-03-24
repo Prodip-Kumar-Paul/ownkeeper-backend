@@ -9,6 +9,11 @@
     "noImplicitAny": true,
     "esModuleInterop": true,
     "resolveJsonModule": true,
+    "paths": {
+      "@/types/*": ["./src/types/*"],
+      "*": ["./src/types/*"]
+    },
+    "typeRoots": ["./src/types"],
     "lib": ["es6", "esnext"]
   },
   "include": ["src/**/*"],
